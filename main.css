@@ -1,0 +1,67 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    perspective: 1000px;
+}
+
+.half {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.6s ease;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.left {
+    background-color: #1e90ff;
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+    z-index: 2;
+}
+
+.right {
+    background-color: #ff6347;
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    z-index: 1;
+}
+
+.text {
+    color: white;
+    font-size: 2em;
+    transition: transform 0.6s ease;
+    pointer-events: none;
+}
+
+.container:hover .left {
+    transform: translateX(-2%);
+}
+
+.container:hover .right {
+    transform: translateX(2%);
+}
+
+.container .half:hover .text {
+    transform: scale(1.4);
+}
+
+.container .half:not(:hover) .text {
+    transform: scale(0.8);
+}
